@@ -1,4 +1,19 @@
 # UdaConnect
+
+## How to run UdaConnect Project
+
+1. CI/CD
+- Continuous Integration is done through GitHub Actions on this repository
+- Continuous Delivery is implemented by picking up the docker images from https://hub.docker.com 
+1. `kubectl apply -f deployment/db-configmap.yaml` - Set up environment variables for the pods
+2. `kubectl apply -f deployment/db-secret.yaml` - Set up secrets for the pods
+3. `kubectl apply -f deployment/postgres.yaml` - Set up a Postgres database running PostGIS
+4. `kubectl apply -f deployment/kafka.yaml` - Set up a Kafka broker
+5. `kubectl apply -f deployment/udaconnect-connections-api.yaml` - Set up the service and deployment for the Connections API
+6. `kubectl apply -f deployment/udaconnect-persons-api.yaml` - Set up the service and deployment for the Persons API
+7. `kubectl apply -f deployment/udaconnect-locations-api.yaml` - Set up the service and deployment for the Locations API
+8. `kubectl apply -f deployment/udaconnect-app.yaml` - Set up the service and deployment for the web app
+
 ## Overview
 ### Background
 Conferences and conventions are hotspots for making connections. Professionals in attendance often share the same interests and can make valuable business and personal connections with one another. At the same time, these events draw a large crowd and it's often hard to make these connections in the midst of all of these events' excitement and energy. To help attendees make connections, we are building the infrastructure for a service that can inform attendees if they have attended the same booths and presentations at an event.
