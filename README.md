@@ -14,6 +14,14 @@
 7. `kubectl apply -f deployment/udaconnect-locations-api.yaml` - Set up the service and deployment for the Locations API
 8. `kubectl apply -f deployment/udaconnect-app.yaml` - Set up the service and deployment for the web app
 
+
+2. Test kafka in K3S
+```
+kubectl exec -it kafka-0 -- kafka-topics.sh --create --bootstrap-server kafka-headless:9092 --replication-factor 1 --partitions 1 --topic locations
+kubectl exec -it kafka-0 -- kafka-console-consumer.sh --bootstrap-server kafka-headless:9092 --topic locations
+kubectl exec -it kafka-0 -- kafka-console-producer.sh --broker-list kafka-headless:9092 --topic locations
+```
+
 ## Overview
 ### Background
 Conferences and conventions are hotspots for making connections. Professionals in attendance often share the same interests and can make valuable business and personal connections with one another. At the same time, these events draw a large crowd and it's often hard to make these connections in the midst of all of these events' excitement and energy. To help attendees make connections, we are building the infrastructure for a service that can inform attendees if they have attended the same booths and presentations at an event.
