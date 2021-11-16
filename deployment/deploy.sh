@@ -6,4 +6,5 @@ kubectl apply -f deployment/udaconnect-connections-api.yaml
 kubectl apply -f deployment/udaconnect-persons-api.yaml
 kubectl apply -f deployment/udaconnect-locations-api.yaml
 kubectl apply -f deployment/udaconnect-locations-kafka.yaml
+kubectl apply -f deployment/udaconnect-persons-grpc.yaml
 kubectl apply -f deployment/udaconnect-app.yaml

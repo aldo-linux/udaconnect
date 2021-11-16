@@ -12,7 +12,8 @@
 5. `kubectl apply -f deployment/udaconnect-connections-api.yaml` - Set up the service and deployment for the Connections API
 6. `kubectl apply -f deployment/udaconnect-persons-api.yaml` - Set up the service and deployment for the Persons API
 7. `kubectl apply -f deployment/udaconnect-locations-api.yaml` - Set up the service and deployment for the Locations API
-8. `kubectl apply -f deployment/udaconnect-app.yaml` - Set up the service and deployment for the web app
+8. `kubectl apply -f deployment/udaconnect-locations-kafka.yaml` - Set up the service and deployment for the Locations Kafka Consumer
+9. `kubectl apply -f deployment/udaconnect-app.yaml` - Set up the service and deployment for the web app
 
 
 2. Test kafka in K3S
@@ -20,6 +21,14 @@
 kubectl exec -it kafka-0 -- kafka-topics.sh --create --bootstrap-server kafka-headless:9092 --replication-factor 1 --partitions 1 --topic locations
 kubectl exec -it kafka-0 -- kafka-console-consumer.sh --bootstrap-server kafka-headless:9092 --topic locations
 kubectl exec -it kafka-0 -- kafka-console-producer.sh --broker-list kafka-headless:9092 --topic locations
+```
+
+### Useful Tips for Troubleshooting
+
+- Execute a shell inside the docker image
+```
+kubectl exec --stdin --tty udaconnect-locations-kafka-f9dbccc6-kslx7 -- /bin/sh
+
 ```
 
 ## Overview
