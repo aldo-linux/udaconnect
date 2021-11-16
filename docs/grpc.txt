@@ -1,0 +1,8 @@
+
+## Test the persons-grpc
+
+1. Get the pods and obtain the pod name for person-grpc: i.e. udaconnect-persons-grpc-585d6fcb-lfzh4
+
+2. Go inside the container by executing a shell commoand on the pod: kubectl exec --stdin --tty udaconnect-persons-grpc-585d6fcb-lfzh4 -- /bin/sh
+
+3. Run the client: python app/grpcclient.py

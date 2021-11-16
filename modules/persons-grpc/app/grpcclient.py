@@ -2,9 +2,7 @@ import grpc
 import person_pb2
 import person_pb2_grpc
 
-
-
-print("Sending sample payload...")
+print("Calling Persons gRPC...")
 
 channel = grpc.insecure_channel("localhost:5005")
 stub = person_pb2_grpc.PersonServiceStub(channel)
