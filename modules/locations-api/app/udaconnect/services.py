@@ -41,10 +41,11 @@ class LocationService:
         new_location.person_id = location["person_id"]
         new_location.creation_time = location["creation_time"]
         new_location.coordinate = ST_Point(location["latitude"], location["longitude"])
-        # DON'T WRITE TO DB, SEND A MESSAGE TO KAFA INSTEAD
+        # WRITE TO DB AND SEND A MESSAGE TO KAFA AS WELL
         producer.send(TOPIC_NAME, new_location)
         producer.flush()
-        # db.session.add(new_location)
-        # db.session.commit()
+        
+        db.session.add(new_location)
+        db.session.commit()
 
         return new_location

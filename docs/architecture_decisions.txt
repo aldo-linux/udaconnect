@@ -2,8 +2,8 @@ The original architecture consumed the UdaConnect API as a monolithic service, I
 
 1) Processing large amount of locations data which could be aggregated asynchonously using Kafka, for this reason decided to implement:
    - Break down the monolithic UdaConnect API into microservices for each entity
-   - Focus on the locations-api to send messages to Kafka instead of just writting to the DB 
-   - location-kafka microservice was introduced to process the location data asyncronously
+   - Focus on the locations-api to send messages to Kafka besides writting to the DB 
+   - location-kafka microservice was introduced to process the location data asyncronously, for purposes of simplification the Kafka consumer only prints the messages in the logs
 
 2) Reuse functionality across microservices
    - Implemented the persons-grpc to allow Persons Service to be efficiently reused from othe microservices in thr future
